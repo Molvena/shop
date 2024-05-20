@@ -79,7 +79,7 @@ const Header = () => {
 
           {/* Icono del carrito de compras */}
           <IconButton color="inherit" onClick={toggleCart}>
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={1} color="secondary">
               {" "}
               {/* Dinamiza esta cantidad según el estado del carrito */}
               <ShoppingCartIcon className="shake-animation" />

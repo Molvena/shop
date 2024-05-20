@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // components/ProductCard.jsx
 
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardContent,
@@ -11,9 +11,13 @@ import {
   Button,
   CardActionArea,
 } from "@mui/material";
+import { BasketContext } from "../../context";
 
 // Componente para renderizar la tarjeta del producto
 const ProductCard = ({ product }) => {
+  //me traigo el contexto Basketcontext 
+  //y de el extraigo la propiedad addProduct que es la que voy a consumir
+  const {addProduct} = useContext(BasketContext)
   return (
     <Card
       sx={{
@@ -53,7 +57,10 @@ const ProductCard = ({ product }) => {
         </CardContent>
       </CardActionArea>
       <CardActions disableSpacing sx={{ justifyContent: "flex-end" }}>
-        {/* Botón para añadir al carrito */}
+        {/* Botón para añadir al carrito */}      
+        {/* Añado el boton con la propiedad addProduct del context y el producto a añadir*/}
+        <Button onClick={()=>addProduct(product)}>Añadir al carrito</Button>        
+        
       </CardActions>
     </Card>
   );

@@ -1,10 +1,15 @@
-import { List, Typography, Box } from "@mui/material";
+import { List, Typography, Box, ListItem, ListItemText } from "@mui/material";
+
+import { useContext } from "react";
+import { BasketContext } from "../../context";
+
+
 
 // Componente funcional Cart
 // eslint-disable-next-line react/prop-types
 const Cart = () => {
   // Utilizamos el contexto del carrito
-
+  const {basket} = useContext(BasketContext);
   // Función para manejar la eliminación de un ítem del carrito
   return (
     <Box sx={{ width: 320, p: 2 }}>
@@ -14,6 +19,19 @@ const Cart = () => {
       </Typography>
       <List>
         {/* Mapeamos los ítems del carrito para mostrarlos */}
+          {/* basket es un array con los productos del carrito,
+          que son objetos con varias claves de las que tendre que sacar el name 
+          es decir con el mapeo saco los productos con su nombre*/}
+          {basket.map((item,index)=>(
+                  <ListItem key={index}>
+                    <ListItemText primary={item.name} />
+                    {/* <ListItemText primary={item.price} /> */}
+                  </ListItem>
+          )
+        )}
+        {/* TEngo que sacar las unidades que he metido en el carrito
+        de cada uno de los productos */}
+
 
         {/* Mostramos el botón de "Proceder al Pago" si hay ítems en el carrito */}
       </List>

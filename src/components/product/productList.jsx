@@ -10,7 +10,7 @@ const productsWithImages = products.map((product) => {
   if (image) {
     product.images = image.images;
   }
-  return product;
+  return product
 });
 
 const ProductsList = () => {
@@ -26,7 +26,7 @@ const ProductsList = () => {
         ))}
       </Grid>
     </Container>
-  );
+  )
 };
 
 export default ProductsList;
