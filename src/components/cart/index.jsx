@@ -14,7 +14,7 @@ const Cart = () => {
 
    // Función para manejar la eliminación de un ítem del carrito
   const handleRemoveProduct = (product) => {
-    dispatch({ type: 'remove', payload: { id: product } })};
+    dispatch({ type: 'remove', item: { id: product } })};
  
   return (
     <Box sx={{ width: 320, p: 2 }}>
@@ -29,7 +29,7 @@ const Cart = () => {
           es decir con el mapeo saco los productos con su nombre y su precio*/}
           {basket.map((item,index)=>(
                   <ListItem key={index}>
-                    <ListItemText primary={item.name} secondary={item.price} />
+                    <ListItemText primary={item.name} secondary={`Cantidad: ${item.cantidad} ud, Precio: $${item.price}`} />
                        <button onClick={()=>handleRemoveProduct(item.id) }>Eliminar</button>       
                     </ListItem>
           )

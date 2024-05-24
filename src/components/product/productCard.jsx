@@ -16,7 +16,7 @@ import { useCart } from "../../context";
 // Componente para renderizar la tarjeta del producto
 const ProductCard = ({ product }) => {
   const {dispatch} = useCart();
-  const addProduct = () => dispatch({type: "add", payload: product})
+  const addProduct = () => dispatch({type: "add", item: product})
   return (
     <Card
       sx={{

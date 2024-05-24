@@ -16,7 +16,7 @@
     "description": "<p>El <strong>masajeador Escarabajo</strong> es un",
     "url": "masajeador-escarabajo",
     "isoCode": "es",
-    "price": 10,
+    "price": 20,
     "dateUpdDescription": "2016-07-08 07:26:47"
   },
   {
@@ -26,7 +26,7 @@
     "description": "<p>Comprar recambios para fregonas giratorias al m",
     "url": "recambio-de-fregona-1-unidad",
     "isoCode": "es",
-    "price": 10,
+    "price": 50,
     "dateUpdDescription": "2016-07-08 07:26:49"
   },
   {
@@ -36,7 +36,7 @@
     "description": "¡Con el <b>soporte</b> <b>jamonero Gourmet</b> pod",
     "url": "soporte-jamonero-gourmet",
     "isoCode": "es",
-    "price": 10,
+    "price": 35,
     "dateUpdDescription": "2016-07-08 07:24:21"
   },
   {

@@ -19,15 +19,27 @@ import { createContext, useContext, useReducer, useState } from "react";
 
 //Paso 2
 function BasketReducer(state, action) {
+   
      switch (action.type) {
         case "add":
-            return[...state,action.payload]
+            //Tenemos que buscar si el elto existe en el array(state)
+            //para ello usamos findIndex. ver metodo mas abajo
+            //action.item.id accede a la propiedad id del producto que se está intentando añadir al carrito
+            
+            const itemIndex = state.findIndex((item)=> item.id === action.item.id);
+            if(itemIndex !==-1){
+            // Si el ítem ya está en el carrito, incrementamos su cantidad
+                const newState = [...state];
+                newState[itemIndex] = {...newState[itemIndex], cantidad:newState[itemIndex].cantidad + 1,};
+                return newState
+            } else {
+                return [...state, {...action.item, cantidad: 1}];
+            }
         case "remove":
-          return (state.filter((item) => item.id !==action.payload.id ));
+          return state.filter((item) => item.id !==action.item.id );
         default:
             return state
-            
-    }
+    } 
 }
 
 
@@ -45,7 +57,10 @@ export const CartProvider =({children}) => {
 export const useCart = () => useContext(BasketContext);
 
 
-
+//El método findIndex() devuelve el índice del primer elemento de un array 
+//que cumpla con la función de prueba proporcionada.
+// En caso contrario devuelve -1
+//arr.findIndex(callback( element[, index[, array]] )[, thisArg])
 
 
 
