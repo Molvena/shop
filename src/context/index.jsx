@@ -5,8 +5,56 @@
 //se compartirá la información de la cesta entre diferentes componentes
 
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
+//con useContext+useReducer
+
+//Paso 1: Crear un contexto para el carrito
+//Paso 2: Definir una funcion reducer que añade nuevos productos
+//oi los elimina de la cesta
+//Paso 3: Crear el provider que contendra el estado y la función reductora
+
+//Paso 1
+ const BasketContext = createContext();
+
+//Paso 2
+function BasketReducer(state, action) {
+     switch (action.type) {
+        case "add":
+            return[...state,action.payload]
+        case "remove":
+          return (state.filter((item) => item.id !==action.payload.id ));
+        default:
+            return state
+            
+    }
+}
+
+
+//Paso 3:
+export const CartProvider =({children}) => {
+    //basket es el estado inicial , que es un array vacío
+
+    const [basket,dispatch] = useReducer(BasketReducer,[]);
+       return(
+            <BasketContext.Provider value = {{basket,dispatch}}>
+                {children}
+            </BasketContext.Provider>
+        )
+}
+export const useCart = () => useContext(BasketContext);
+
+
+
+
+
+
+
+
+
+
+
+//con useContext
 //Paso 1: Se crea un contexto para el carrito
 //Paso 2: se crea el componente proveedor del contexto
 //Aqui tendre que añadir los productos a la cesta.
@@ -20,24 +68,24 @@ import { createContext, useState } from "react";
 //que es la lista de productos que he añadido
 //Tambien lo consumirá en productCart para crear el boton que añade los productos
 
-//Paso 1
-export const BasketContext = createContext();
-//Paso 2
-export const CartProvider = ({children}) => {
-    const [basket, setBasket] = useState([]);
+// //Paso 1
+// export const BasketContext = createContext();
+// //Paso 2
+// export const CartProvider = ({children}) => {
+//     const [basket, setBasket] = useState([]);
 
-//aqui tendre que desarrollar las funciones que me añaden el producto a la cesta
-//con las validaciones correspondientes //*faltan las validaciones!!!
-    const addProduct = (newProduct) =>{
-          setBasket([...basket,newProduct])
-          }
-          console.log(basket);
-return(
-    <BasketContext.Provider value={{basket, addProduct}}>
-        {children}
-    </BasketContext.Provider>
-   )
-};
+// //aqui tendre que desarrollar las funciones que me añaden el producto a la cesta
+// //con las validaciones correspondientes //*faltan las validaciones!!!
+//     const addProduct = (newProduct) =>{
+//           setBasket([...basket,newProduct])
+//           }
+//           console.log(basket);
+// return(
+//     <BasketContext.Provider value={{basket, addProduct}}>
+//         {children}
+//     </BasketContext.Provider>
+//    )
+// };
 
 
 
