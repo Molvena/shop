@@ -15,7 +15,7 @@ import { createContext, useContext, useReducer, useState } from "react";
 //Paso 3: Crear el provider que contendra el estado y la función reductora
 
 //Paso 1
- const BasketContext = createContext();
+ export const BasketContext = createContext();
 
 //Paso 2
 function BasketReducer(state, action) {
@@ -54,7 +54,7 @@ export const CartProvider =({children}) => {
             </BasketContext.Provider>
         )
 }
-export const useCart = () => useContext(BasketContext);
+
 
 
 //El método findIndex() devuelve el índice del primer elemento de un array 

@@ -11,7 +11,7 @@ import {
   Button,
   CardActionArea,
 } from "@mui/material";
-import { useCart } from "../../context";
+import { useCart } from "../../hooks/useCart";
 
 // Componente para renderizar la tarjeta del producto
 const ProductCard = ({ product }) => {

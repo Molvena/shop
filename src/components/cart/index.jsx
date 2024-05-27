@@ -1,7 +1,7 @@
 import { List, Typography, Box, ListItem, ListItemText, Button } from "@mui/material";
 
 
-import {useCart} from "../../context";
+import {useCart} from "../../hooks/useCart";
 
 
 
