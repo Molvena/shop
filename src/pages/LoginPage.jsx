@@ -1,10 +1,9 @@
 
-import { Form } from "../components/Forms/Form";
+import Formulario from "../components/Forms/Form";
 
 
-const LoginPage = () => {
+export const LoginPage = () => {
   return (
-    <Form/>
+    <Formulario/>
   )
 }
-export default LoginPage

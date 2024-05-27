@@ -8,6 +8,11 @@ import Pages from "./pages";
 function App() {
   return (
 
+
+
+
+
+    
           <Pages />
         //tendre que meter algo como esto con las rutas de las paginas que yo me cree
         //tanto protegidas como no protegidas

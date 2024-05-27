@@ -32,6 +32,8 @@ const Header = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  
+
   return (
     <>
       <AppBar position="static">
@@ -73,6 +75,7 @@ const Header = () => {
             aria-controls="menu-appbar"
             aria-haspopup="true"
             color="inherit"
+           
           >
             <AccountCircle />
           </IconButton>

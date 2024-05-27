@@ -8,7 +8,7 @@ import {useForm} from "react-hook-form";
 //Nos traemos de la libreria las que vamos a usar,
 //en este caso register, handleSubmit,etc...hay muchas mas
 
-function Form () {
+function Formulario () {
   const {
     register,
     handleSubmit,
@@ -116,5 +116,5 @@ function Form () {
   )
 }
 
-export default Form
+export default Formulario
 
