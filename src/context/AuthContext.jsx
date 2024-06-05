@@ -1,6 +1,6 @@
 //Aqui desarrollamos un contexto para manejar el acceso de los usuarios
 
-import { createContext } from "react";
+import { createContext, useMemo } from "react";
 import {useLocalStorage} from "../hooks/useLocalStorage"
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,7 @@ export const AuthProvider = ({children}) => {
 
     const [user, setUser] = useLocalStorage("user", null);
 // useNavigate hook de React Router para la navegación programática.
+//Te permite redirigir al ususaio cambiando el path
 
     const navigate = useNavigate();
 
@@ -28,7 +29,16 @@ export const AuthProvider = ({children}) => {
     setUser(null); // Establecemos el usuario a null en el estado.
     navigate("/", { replace: true }); // Navegamos a la página principal, reemplazando la ruta actual.
   };
-
-
+// useMemo memoriza el valor del contexto para evitar recalcularlo en cada renderizado.
+  const value = useMemo(
+    ()=>({
+      user,// Estado del usuario.
+      login,// Función de login.
+      logout,// Función de logout.
+    }),
+    [user] // Solo recalcula el valor si el estado del usuario cambia.
+  );
+  //Devolvemos el Provider con sus valores asignados
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 
 }

@@ -17,6 +17,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cart from "../cart";
 
+
 const Header = () => {
   // Estado para controlar la apertura y cierre del carrito
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -31,12 +32,12 @@ const Header = () => {
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-
+// Le pones el estado contrario al que tenga
   
 
   return (
     <>
-      <AppBar position="static">
+         <AppBar position="static">
         <Toolbar>
           {/* Botón del menú */}
           <IconButton

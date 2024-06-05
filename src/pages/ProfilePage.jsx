@@ -1,7 +1,7 @@
 import { BasicPage } from "../components/BasicPage";
 
 
-export const ProfilPage = () => {
+export const ProfilePage = () => {
   return (
     <BasicPage
     title='Profile Page'
