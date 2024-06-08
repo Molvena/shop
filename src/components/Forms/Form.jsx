@@ -2,6 +2,8 @@
 
 
 import {useForm} from "react-hook-form";
+import {useAuth} from "../../hooks/useAuth"
+import { useState } from "react";
 
 //Este hook nos lo traemos de react-hook-form
 //Como todos los hooks, devuelve una serie de herramientas para trabajar
@@ -23,24 +25,33 @@ function Formulario () {
 //     }
 // }
 
+const { login } = useAuth();
+// const [userLogin, setUserLogin] = useState("");
+
+// const handleInput = (ev) => {
+//   const { name, value } = ev.target;
+//   setUserLogin({ ...userLogin, [name]: value });
+// };
   const onSubmit = (data) =>{
     //Aqui procesamos los datos del formulario
     console.log("data", data);
+    login(data);
   };
+
+
 
   return (
     <form onSubmit = {handleSubmit(onSubmit)}>
-
       <div>
         <label htmlFor="name">Nombre</label>
         <input 
           type="text"
           id="name"
           {...register("name", {
-            required: true, 
+            required: "El nombre es obligatorio", 
             min: {
               value: 2,
-              message: 'Error'
+              message: 'El nombre debe tener al menos dos caracteres'
             }
           }
         )} placeholder="Nombre"
@@ -53,11 +64,11 @@ function Formulario () {
         <input 
           type="text"
           id="surname"
-          {...register("surname", {
+          {...register("Apellido", {
             required: true, 
             min: {
               value: 2,
-              message: 'Error'
+              message: 'El apellido debe tener al menos dos caracteres'
             }
           }
         )} placeholder="Apellidos"
@@ -111,8 +122,7 @@ function Formulario () {
         {errors.name && <p>{errors.name.message}</p>}
       </div>
       <button type='submit'>Submit</button>
-    
-    </form>
+      </form>
   )
 }
 

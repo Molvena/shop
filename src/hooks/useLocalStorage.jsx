@@ -23,12 +23,16 @@ export const useLocalStorage = (keyName,defaultValue) => {
                 // Si no hay valor almacenado, guardamos el valor por defecto en localStorage.
                 window.localStorage.setItem(keyName, JSON.stringify(defaultValue));
                 return defaultValue;
-                // Devolvemos el valor por defecto.
+                // Devolvemos el valor por defecto, que en nuestro caso es null
+
             }
             
         } catch (error) {
             // Si ocurre un error (por ejemplo, JSON.parse falla), devolvemos el valor por defecto.
+            
+            console.log(defaultValue);
             return defaultValue;
+            
         }
     });
     //Hasta ahora hemos gestionado la comunicacion con el localStorage
@@ -46,6 +50,7 @@ export const useLocalStorage = (keyName,defaultValue) => {
         //Actualizamos el estado con el nuevo valor
             setStoredValue(newValue);
     };
+   
     return[storedValue,setValue];
     // Devolvemos un array con el valor almacenado y la función para actualizarlo,
     // similar a como useState devuelve un estado y su función de actualización.

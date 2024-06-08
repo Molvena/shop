@@ -7,6 +7,7 @@ import {CustomAppBar} from "../../components/CustomAppBar"
 
 export const HomeLayout = () => {
     const {user} = useAuth();
+    console.log(user);
     const outlet = useOutlet();
     //NOs traemos el usuario del useAuth para ver si existe
     //Si existe, no te vengas al homeLayout, lo llevamos a la pagina del profile
@@ -16,14 +17,10 @@ export const HomeLayout = () => {
     }
   return (
     <div>
-        <CustomAppBar
-         pages={[
-          { label: "Home", path: "/" },
-          { label: "Login", path: "/login" },
-          { label: "SignUpPage", path: "/signUp"},
-          ]}
-        />
-      {outlet}
+        {outlet}
+        <h1>Hola soy Elena</h1>
+
+      
 
     </div>
   )

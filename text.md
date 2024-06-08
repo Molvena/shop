@@ -6,3 +6,16 @@ Que pasos tengo que seguir para poder visualizar el formulario?
         -
 
     Paso 2: Implementar esa ruta en mi Router
+
+    const { login } = useAuth();
+  const [userLogin, setUserLogin] = useState("");
+
+  const handleInput = (ev) => {
+    const { name, value } = ev.target;
+    setUserLogin({ ...userLogin, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(userLogin);
+  };

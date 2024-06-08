@@ -10,13 +10,15 @@ import {
   TextField,
   Drawer,
   Badge,
+  ButtonBase,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cart from "../cart";
-
+import {NavLink} from "react-router-dom";
+import {useAuth} from "../../hooks/useAuth"
 
 const Header = () => {
   // Estado para controlar la apertura y cierre del carrito
@@ -34,6 +36,9 @@ const Header = () => {
   };
 // Le pones el estado contrario al que tenga
   
+const {user, logout} = useAuth();
+ 
+
 
   return (
     <>
@@ -54,6 +59,14 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Mi Tienda
           </Typography>
+          <NavLink to="/">
+          <Button 
+            variant="text"
+            color="inherit"
+          >
+            HOME
+          </Button>
+          </NavLink>
 
           {/* Barra de búsqueda */}
           <TextField
@@ -67,8 +80,28 @@ const Header = () => {
             margin="normal"
             sx={{ backgroundColor: "white", borderRadius: 1, mr: 2 }}
           />
+          <NavLink to="/login">
+          <Button 
+            variant="text"
+            color="inherit"
+          >LOGIN
+          </Button>
+          </NavLink>
+
+          <NavLink to="/">
+            {/* Aqui le pongo la condicion para que solo me rederice el boton si existe user */}
+           {user &&(
+          <Button 
+            variant="text"
+            color="inherit"
+            onClick={logout}
+          >LOGOUT
+          </Button>
+          )}
+          </NavLink>
 
           {/* Icono de cuenta de usuario */}
+          <NavLink to="/signUp">
           <IconButton
             size="large"
             edge="end"
@@ -80,6 +113,7 @@ const Header = () => {
           >
             <AccountCircle />
           </IconButton>
+          </NavLink>
 
           {/* Icono del carrito de compras */}
           <IconButton color="inherit" onClick={toggleCart}>
