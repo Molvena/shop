@@ -59,6 +59,10 @@ const {user, logout} = useAuth();
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Mi Tienda
           </Typography>
+
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            HOLA {user.name}
+          </Typography>
           <NavLink to="/">
           <Button 
             variant="text"
@@ -81,11 +85,13 @@ const {user, logout} = useAuth();
             sx={{ backgroundColor: "white", borderRadius: 1, mr: 2 }}
           />
           <NavLink to="/login">
+          {!user &&(
           <Button 
             variant="text"
             color="inherit"
           >LOGIN
           </Button>
+          )}
           </NavLink>
 
           <NavLink to="/">
@@ -96,6 +102,28 @@ const {user, logout} = useAuth();
             color="inherit"
             onClick={logout}
           >LOGOUT
+          </Button>
+          )}
+          </NavLink>
+
+          <NavLink to="dashboard/settings">
+            {/* Aqui le pongo la condicion para que solo me rederice el boton si existe user */}
+           {user &&(
+          <Button 
+            variant="text"
+            color="inherit"
+          >SETTINGS
+          </Button>
+          )}
+          </NavLink>
+
+          <NavLink to="dashboard/profile">
+            {/* Aqui le pongo la condicion para que solo me rederice el boton si existe user */}
+           {user &&(
+          <Button 
+            variant="text"
+            color="inherit"
+          >PROFILE
           </Button>
           )}
           </NavLink>

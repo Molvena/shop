@@ -1,6 +1,6 @@
 import { Navigate, useOutlet } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { CustomAppBar } from "../CustomAppBar";
+
 
 export const ProtectedLayout = () => {
   const { user } = useAuth();
@@ -13,7 +13,6 @@ export const ProtectedLayout = () => {
 
   return (
     <div>
-
       {outlet} 
     </div>
   );

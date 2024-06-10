@@ -14,15 +14,19 @@ import {ProtectedLayout} from "../components/user/ProtectedLayout.jsx";
 export default function PagesRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
+      {/* Esta de Home la saco fuera para que se pueda 
+      acceder a ella tanto si se esta logueado como si no */}
+
       <Route element = {<HomeLayout/>}> 
-        <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
       </Route>  
 
       <Route path='/dashboard' element={<ProtectedLayout />}>
-        <Route path='profile' element={<ProfilePage />} />
-        <Route path='settings' element={<SettingPage />} />
+        <Route path='/dashboard/profile' element={<ProfilePage />} />
+        <Route path='/dashboard/settings' element={<SettingPage />} />
+       
       </Route> 
     </Routes>
   );

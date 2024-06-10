@@ -21,8 +21,11 @@ export const AuthProvider = ({children}) => {
 // Función de login que actualiza el estado del usuario y navega al perfil del usuario.
     const login = async (data) => {
     setUser(data); // Establecemos el usuario en el estado.
-    navigate("/dashboard/profile", { replace: true }); // Navegamos al perfil del usuario, reemplazando la ruta actual.
+    navigate("/", { replace: true }); // Navegamos al perfil del usuario, reemplazando la ruta actual.
   };
+
+
+
 
   // Función de logout que limpia el estado del usuario y navega a la página principal.
   const logout = () => {
@@ -35,6 +38,7 @@ export const AuthProvider = ({children}) => {
       user,// Estado del usuario.
       login,// Función de login.
       logout,// Función de logout.
+    
     }),
     [user] // Solo recalcula el valor si el estado del usuario cambia.
   );
